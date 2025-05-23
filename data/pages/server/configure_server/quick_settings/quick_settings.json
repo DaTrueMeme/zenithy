@@ -1,0 +1,86 @@
+{
+    "background": "data/pages/server/configure_server/quick_settings/background.jpg",
+    "elements": [
+        {
+            "type": "button",
+            "text": "Back",
+            "id": "back_button",
+            "function": "ElementManager.loadPage('server/configure_server/configure_server')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "${selected_server}",
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "Quick Settings",
+            "id": "title",
+            "size": 14,
+            "pad": 20
+        },
+        {
+            "type": "entry",
+            "text": "MOTD",
+            "default": {"function": "ServerManager.getServerProperty(ElementManager.data['selected_server'], 'motd')"},
+            "function": "saveMOTD(ElementManager)",
+            "id": "motd",
+            "pad": 5,
+            "button": {
+                "text": "Save MOTD",
+                "id": "save_motd",
+                "function": "saveMOTD(ElementManager)",
+                "state": {"condition": "os.path.isfile(f'{ServerManager.servers[ElementManager.data['selected_server']]['path']}/server.properties')"},
+                "pad": 5
+            }
+        },
+        {
+            "type": "switch",
+            "text":"Use UPnP (IP-Forwarding)",
+            "id": "use_upnp",
+            "enabled": {"condition": "ServerManager.getServerData(ElementManager.data['selected_server'])['use_upnp'] == True"},
+            "enable_function": "ServerManager.setServerData(ElementManager.data['selected_server'], 'use_upnp', True)",
+            "disable_function": "ServerManager.setServerData(ElementManager.data['selected_server'], 'use_upnp', False)",
+            "pad": 5
+        },
+        {
+            "type": "switch",
+            "text": "Allow Transfers",
+            "id": "allow_transfers",
+            "enabled": {"condition": "ServerManager.getServerProperty(ElementManager.data['selected_server'], 'accepts-transfers') == 'true'"},
+            "enable_function": "enableProp(ElementManager, 'accepts-transfers', True)",
+            "disable_function": "enableProp(ElementManager, 'accepts-transfers', False)",
+            "pad": 5
+        },
+        {
+            "type": "switch",
+            "text": "Enable Command Blocks",
+            "id": "command_blocks",
+            "enabled": {"condition": "ServerManager.getServerProperty(ElementManager.data['selected_server'], 'enable-command-block') == 'true'"},
+            "enable_function": "enableProp(ElementManager, 'enable-command-block', True)",
+            "disable_function": "enableProp(ElementManager, 'enable-command-block', False)",
+            "pad": 5
+        },
+        {
+            "type": "switch",
+            "text": "Allow Flight",
+            "id": "allow_flight",
+            "enabled": {"condition": "ServerManager.getServerProperty(ElementManager.data['selected_server'], 'allow-flight') == 'true'"},
+            "enable_function": "enableProp(ElementManager, 'allow-flight', True)",
+            "disable_function": "enableProp(ElementManager, 'allow-flight', False)",
+            "pad": 5
+        },
+        {
+            "type": "switch",
+            "text": "Allow PVP",
+            "id": "allow_pvp",
+            "enabled": {"condition": "ServerManager.getServerProperty(ElementManager.data['selected_server'], 'pvp') == 'true'"},
+            "enable_function": "enableProp(ElementManager, 'pvp', True)",
+            "disable_function": "enableProp(ElementManager, 'pvp', False)",
+            "pad": 5
+        }
+    ]
+}

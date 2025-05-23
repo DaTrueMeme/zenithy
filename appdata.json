@@ -1,0 +1,16 @@
+{
+    "version": "Zenith TB0.0.5",
+    "theme": "default",
+    "keep_servers_online": false,
+    "update_blacklist": [
+        "main.py",
+        "main.spec",
+        "latest.json",
+        "build",
+        "dist",
+        "builds",
+        "temp",
+        "Zenith.exe",
+        "appdata.json"
+    ]
+}

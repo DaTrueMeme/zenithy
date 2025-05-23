@@ -1,0 +1,39 @@
+{
+    "background": "data/pages/server/confirm_deletion/background.jpg",
+    "elements": [
+        {
+            "type": "label",
+            "text": "Are you sure you want to delete this server?\nThis cannot be undone.",
+            "id": "server_name_label",
+            "size": 24,
+            "pad": 20
+        },
+        {
+            "type": "frame",
+            "id": "frame",
+            "width": 600,
+            "height": 50,
+            "pad": 5,
+            "children": [
+                {
+                    "type": "button",
+                    "text": "Yes",
+                    "id": "yes_button",
+                    "function": "deleteServer(ElementManager)",
+                    "padx": 5,
+                    "pad": 5,
+                    "align": "left"
+                },
+                {
+                    "type": "button",
+                    "text": "No",
+                    "id": "no_button",
+                    "function": "ElementManager.loadPage('server/configure_server/configure_server')",
+                    "padx": 5,
+                    "pad": 5,
+                    "align": "right"
+                }
+            ]
+        }
+    ]
+}

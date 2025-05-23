@@ -1,0 +1,58 @@
+{
+    "elements": [
+        {
+            "type": "button",
+            "text": "Back",
+            "id": "back_button",
+            "function": "ElementManager.loadPage('server/configure_server/configure_server')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "${selected_server}",
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "Whitelist Settings",
+            "id": "title",
+            "size": 14,
+            "pad": 20
+        },
+        {
+            "type": "switch",
+            "text": "Whitelist Enabled",
+            "id": "whitelisted",
+            "enabled": {"condition": "ServerManager.getServerProperty(ElementManager.data['selected_server'], 'white-list') == 'true'"},
+            "enable_function": "enableProp(ElementManager, 'white-list', True)",
+            "disable_function": "enableProp(ElementManager, 'white-list', False)",
+            "pad": 5
+        },
+        {
+            "type": "entry",
+            "text": "Add Player",
+            "function": "addToWhitelist(ElementManager)",
+            "id": "add_player",
+            "pad": 5,
+            "button": {
+                "text": "Confirm",
+                "id": "add_player_button",
+                "function": "addToWhitelist(ElementManager)",
+                "pad": 5
+            }
+        },
+        {
+            "type": "list",
+            "text": "Whitelisted Players",
+            "id": "whitelisted_list",
+            "width": 300,
+            "height": 275,
+            "pad": 5,
+            "data": {"type": "function", "function": "ServerManager.returnServerFile(ElementManager.data['selected_server'], 'whitelist.json')"},
+            "function": "editPlayerWhitelist(ElementManager, dict(list-value))",
+            "button_text": "d['name']"
+        }
+    ]
+}

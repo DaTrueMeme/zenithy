@@ -1,0 +1,60 @@
+{
+    "elements": [
+        {
+            "type": "button",
+            "text": "Back",
+            "id": "back_button",
+            "function": "ElementManager.loadPage('server/configure_server/custom_ports/custom_ports')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "${selected_server}",
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "Custom Port Editor",
+            "id": "title",
+            "size": 14,
+            "pad": 20
+        },
+        {
+            "type": "frame",
+            "id": "port_options",
+            "width": 600,
+            "height": 50,
+            "pad": 5,
+            "bg_color": "#2b2b2b",
+            "children": [
+                {
+                    "type": "entry",
+                    "text": "Custom Port",
+                    "id": "port",
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "left"
+                },
+                {
+                    "type": "optionmenu",
+                    "text": "Protocol",
+                    "id": "protocol",
+                    "data": ["TCP", "UDP"],
+                    "default": "TCP",
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "right"
+                }
+            ]
+        },
+        {
+            "type": "button",
+            "text": "Confirm",
+            "id": "save_port",
+            "function": "savePort(ElementManager)",
+            "pad": 5
+        }
+    ]
+}

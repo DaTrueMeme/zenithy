@@ -1,0 +1,43 @@
+{
+    "elements": [
+        {
+            "type": "button",
+            "text": "Back",
+            "id": "back_button",
+            "function": "ElementManager.loadPage('server/configure_server/configure_server')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "${selected_server}",
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "Manage Custom Ports",
+            "id": "title",
+            "size": 14,
+            "pad": 20
+        },
+        {
+            "type": "button",
+            "text": "New Port",
+            "id": "new_port",
+            "function": "ElementManager.loadPage('server/configure_server/custom_ports/new_port/new_port')",
+            "pad": 5
+        },
+        {
+            "type": "list",
+            "text": "Custom Ports",
+            "id": "custom_ports",
+            "width": 300,
+            "height": 275,
+            "pad": 5,
+            "data": {"type": "function", "function": "ServerManager.getServerData(ElementManager.data['selected_server'])['custom_ports']"},
+            "function": "editCustomPort(ElementManager, dict(list-value))",
+            "button_text": "d['port']"
+        }
+    ]
+}

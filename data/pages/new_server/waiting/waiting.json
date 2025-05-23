@@ -1,0 +1,27 @@
+{
+    "background": "data/pages/new_server/waiting/background.jpg",
+    "elements": [
+        {
+            "type": "label",
+            "text": "Creating Server.\nPlease Wait...",
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 20
+        },
+        {
+            "type": "label",
+            "text": "After few seconds, you will be redirected.",
+            "id": "server_name_label",
+            "size": 24,
+            "pad": 5
+        },
+        {
+            "type": "progressbar",
+            "id": "progress_bar",
+            "width": 600,
+            "height": 50,
+            "value": "ServerManager.processes['server_creation']",
+            "pad": 5
+        }
+    ]
+}

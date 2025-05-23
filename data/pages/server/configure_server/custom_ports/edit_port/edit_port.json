@@ -1,0 +1,60 @@
+{
+    "elements": [
+        {
+            "type": "button",
+            "text": "Back",
+            "id": "back_button",
+            "function": "ElementManager.loadPage('server/configure_server/custom_ports/custom_ports')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": {"type": "function", "function": "ElementManager.data['current_data']['port']"},
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": {"type": "function", "function": "ElementManager.data['current_data']['protocol']"},
+            "id": "server_name_label",
+            "size": 24,
+            "pad": 20
+        },
+        {
+            "type": "label",
+            "text": "Remove This Custom Port?",
+            "id": "title",
+            "size": 14,
+            "pad": 5
+        },
+        {
+            "type": "frame",
+            "id": "frame",
+            "width": 600,
+            "height": 50,
+            "pad": 5,
+            "bg_color": "#2b2b2b",
+            "children": [
+                {
+                    "type": "button",
+                    "text": "Yes",
+                    "id": "yes_button",
+                    "function": "removeCustomPort(ElementManager)",
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "left"
+                },
+                {
+                    "type": "button",
+                    "text": "No",
+                    "id": "no_button",
+                    "function": "ElementManager.loadPage('server/configure_server/custom_ports/custom_ports')",
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "right"
+                }
+            ]
+        }
+    ]
+}

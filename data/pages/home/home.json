@@ -1,0 +1,119 @@
+{
+    "elements": [
+        {
+            "type": "image",
+            "path": "data/pages/home/zenith_logo_large.png",
+            "width": 250,
+            "height": 125,
+            "id": "logo",
+            "pad": 18,
+            "padx": 18
+        },
+        {
+            "type": "frame",
+            "id": "frame",
+            "width": 600,
+            "height": 50,
+            "pad": 5,
+            "bg_color": "#2b2b2b",
+            "children": [
+                {
+                    "type": "frame",
+                    "id": "home_options",
+                    "width": 600,
+                    "height": 50,
+                    "pad": 5,
+                    "padx": 40,
+                    "bg_color": "#2b2b2b",
+                    "align": "left",
+                    "children": [
+                        {
+                            "type": "button",
+                            "text": "App Settings",
+                            "id": "app_settings",
+                            "function": "ElementManager.loadPage('app_settings/app_settings')",
+                            "padx": 5,
+                            "pad": 5
+                        },
+                        {
+                            "type": "button",
+                            "text": "Github Page",
+                            "id": "github_page",
+                            "function": "webbrowser.open('https://github.com/datruememe/zenith')",
+                            "pad": 5
+                        },
+                        {
+                            "type": "button",
+                            "text": "Tutorial",
+                            "id": "tutorial",
+                            "function": "webbrowser.open('https://www.youtube.com/@DaTrueAlexDM/videos')",
+                            "pad": 5
+                        }
+                    ]
+                },
+                {
+                    "type": "frame",
+                    "id": "server_view",
+                    "width": 600,
+                    "height": 50,
+                    "pad": 5,
+                    "padx": 40,
+                    "bg_color": "#2b2b2b",
+                    "align": "right",
+                    "children": [
+                        {
+                            "type": "list",
+                            "text": "Servers",
+                            "id": "server_list",
+                            "width": 300,
+                            "height": 200,
+                            "pad": 5,
+                            "data": {"type": "appdata", "key": "servers"},
+                            "function": "ElementManager.selectServer('list-value')",
+                            "button_text": "d" 
+                        },
+                        {
+                            "type": "frame",
+                            "id": "server_options",
+                            "width": 600,
+                            "height": 50,
+                            "pad": 5,
+                            "padx": 5,
+                            "bg_color": "#2b2b2b",
+                            "children": [
+                                {
+                                    "type": "button",
+                                    "text": "New Server",
+                                    "id": "new_server",
+                                    "function": "ElementManager.loadPage('new_server/new_server')",
+                                    "padx": 5,
+                                    "pad": 5,
+                                    "align": "left"
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "Stop All Servers",
+                                    "id": "stop_all_servers",
+                                    "state": {"condition": "len(ServerManager.running_servers) > 0"},
+                                    "function": "stopAll(ElementManager)",
+                                    "padx": 5,
+                                    "pad": 5,
+                                    "align": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "button",
+                            "text": "Close All Ports",
+                            "id": "close_all_ports",
+                            "state": {"condition": "len(ServerManager.opened_ports) > 0"},
+                            "function": "closePorts(ElementManager)",
+                            "padx": 5,
+                            "pad": 5
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

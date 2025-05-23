@@ -1,0 +1,39 @@
+{
+    "elements": [
+        {
+            "type": "label",
+            "text": "JavaJDK ERROR",
+            "id": "title",
+            "size": 48,
+            "pad": 20
+        },
+        {
+            "type": "label",
+            "text": "To run a server, you need to have a JDK installed.\nEither you do not have it, or it's not up to date.\n\nClick the button below to download it automatically,\nor go to https://www.oracle.com/java/technologies/downloads/\n to download it manually.\n\nOnce downloaded, restart the program.",
+            "id": "desc",
+            "size": 18,
+            "pad": 20
+        },
+        {
+            "type": "button",
+            "text": "Download JDK Automatically (Windows x64 Only)",
+            "id": "download_jdk",
+            "function": "downloadJDK(ElementManager, 'auto')",
+            "pad": 5
+        },
+        {
+            "type": "button",
+            "text": "Download JDK Manually",
+            "id": "download_jdk_manual",
+            "function": "downloadJDK(ElementManager, 'manual')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "If you have downloaded the JDK but you're still getting this popup,\nmake sure java and javac are in your environment variables and restart your computer.",
+            "id": "ev_label",
+            "size": 18,
+            "pad": 20
+        }
+    ]
+}

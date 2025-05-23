@@ -1,0 +1,113 @@
+{
+    "background": "data/pages/new_server/background.jpg",
+    "elements": [
+        {
+            "type": "button",
+            "text": "Home",
+            "id": "home_button",
+            "function": "ElementManager.loadPage('home/home')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "Create a New Server",
+            "id": "server_name_label",
+            "size": 24,
+            "pad": 20
+        },
+        {
+            "type": "frame",
+            "id": "main_settings",
+            "width": 600,
+            "height": 50,
+            "pad": 5,
+            "bg_color": "#2b2b2b",
+            "children": [
+                {
+                    "type": "frame",
+                    "id": "server_name",
+                    "width": 600,
+                    "height": 50,
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "left",
+                    "children": [
+                        {
+                            "type": "entry",
+                            "text": "Server Name",
+                            "id": "server_name",
+                            "pad": 5
+                        },
+                        {
+                            "type": "entry",
+                            "text": "Server Port",
+                            "default": "25565",
+                            "id": "server_port",
+                            "pad": 5
+                        }
+                    ]
+                },
+                {
+                    "type": "frame",
+                    "id": "server_type",
+                    "width": 600,
+                    "height": 50,
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "left",
+                    "children": [
+                        {
+                            "type": "segmentedbutton",
+                            "text": "Select Server Type",
+                            "data": ["Vanilla", "Paper", "Fabric"],
+                            "function": "changeServerType(ElementManager)",
+                            "id": "type_selector",
+                            "pad": 5
+                        },
+                        {
+                            "type": "optionmenu",
+                            "text": "Select Version",
+                            "id": "version_selector",
+                            "data": "versions",
+                            "pad": 5
+                        }
+                    ]
+                },
+                {
+                    "type": "slider",
+                    "min": 1,
+                    "max": {"variable": "TOTAL_RAM"},
+                    "default": 1,
+                    "prefix": "Max Memory: ",
+                    "suffix": "GB",
+                    "round": true,
+                    "width": 200,
+                    "id": "memory_selector",
+                    "pad": 5,
+                    "padx": 5
+                }
+            ]
+        },
+        {
+            "type": "switch",
+            "text": "Allow Transfers",
+            "enabled": false,
+            "id": "allow_transfers",
+            "pad": 5
+        },
+        {
+            "type": "switch",
+            "text":"Use UPnP (IP-Forwarding)",
+            "enabled": false,
+            "id": "use_upnp",
+            "pad": 5
+        },
+        {
+            "type": "button",
+            "text": "Create Server",
+            "id": "create_server",
+            "function": "newServer(ElementManager)",
+            "pad": 5
+        }
+    ]
+}

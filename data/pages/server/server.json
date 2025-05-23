@@ -1,0 +1,161 @@
+{
+    "elements": [
+        {
+            "type": "button",
+            "text": "Home",
+            "id": "home_button",
+            "function": "ElementManager.loadPage('home/home')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "'${selected_server}'",
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 20
+        },
+        {
+            "type": "frame",
+            "id": "frame",
+            "width": 600,
+            "height": 50,
+            "pad": 5,
+            "bg_color": "#2b2b2b",
+            "children": [
+                {
+                    "type": "frame",
+                    "id": "server_options",
+                    "width": 600,
+                    "height": 50,
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "left",
+                    "bg_color": "#2b2b2b",
+                    "children": [
+                        {
+                            "type": "frame",
+                            "id": "power_options",
+                            "width": 600,
+                            "height": 50,
+                            "pad": 5,
+                            "children": [
+                                {
+                                    "type": "button",
+                                    "text": "Start Server",
+                                    "id": "start_server",
+                                    "state": {"condition": "self.data['selected_server'] not in ServerManager.running_servers"},
+                                    "function": "startServer(ElementManager)",
+                                    "grid": {"column": 1, "row": 0},
+                                    "padx": 5,
+                                    "pad": 5,
+                                    "align": "left"
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "Stop Server",
+                                    "id": "stop_server",
+                                    "state": {"condition": "self.data['selected_server'] in ServerManager.running_servers"},
+                                    "function": "stopServer(ElementManager)",
+                                    "padx": 5,
+                                    "pad": 5,
+                                    "align": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "frame",
+                            "id": "other_options",
+                            "width": 600,
+                            "height": 50,
+                            "pad": 5,
+                            "bg_color": "#2b2b2b",
+                            "children": [
+                                {
+                                    "type": "button",
+                                    "text": "Accept EULA",
+                                    "id": "accept_eula",
+                                    "show": {"condition": "not ServerManager.getServerData(ElementManager.data['selected_server'])['accepted-eula']"},
+                                    "state": {"condition": "os.path.isfile(f'{ServerManager.servers[ElementManager.data['selected_server']]['path']}/eula.txt')"},
+                                    "function": "acceptEula(ElementManager)",
+                                    "pad": 5,
+                                    "padx": 5,
+                                    "align": "left"
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "Configure Server",
+                                    "id": "configure_server",
+                                    "function": "ElementManager.loadPage('server/configure_server/configure_server')",
+                                    "pad": 5,
+                                    "padx": 5,
+                                    "align": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "frame",
+                    "frame_type": "scrollable",
+                    "id": "server_console_frame",
+                    "width": 500,
+                    "height": 600,
+                    "pad": 5,
+                    "padx": 5,
+                    "align": "left",
+                    "children": [
+                        {
+                            "type": "textbox",
+                            "default": "The server's console will appear here.",
+                            "font_size": 10,
+                            "width": 450,
+                            "height": 200,
+                            "update_with_function": "retriveServerLog(ElementManager)",
+                            "id": "console",
+                            "pad": 5,
+                            "padx": 5
+                        },
+                        {
+                            "type": "entry",
+                            "text": "Send Command",
+                            "id": "send_command",
+                            "pad": 5,
+                            "function": "sendCommand(ElementManager)",
+                            "button": {
+                                "text": "Send",
+                                "id": "send_command_button",
+                                "state": {"condition": "self.data['selected_server'] in ServerManager.running_servers"},
+                                "function": "sendCommand(ElementManager)",
+                                "pad": 5
+                            }
+                        },
+                        {
+                            "type": "frame",
+                            "id": "server_utils",
+                            "width": 600,
+                            "height": 50,
+                            "pad": 5,
+                            "bg_color": "#2ebfa5",
+                            "children": [
+                                {
+                                    "type": "label",
+                                    "text": {"type": "function", "function": "round(ServerManager.getMemoryUsage(ElementManager.data['selected_server']), 2)", "suffix": "gb RAM Used", "run_once": false},
+                                    "id": "memory_label",
+                                    "size": 24,
+                                    "pad": 5
+                                },
+                                {
+                                    "type": "label",
+                                    "text": {"type": "function", "function": "getStorage(ElementManager)", "suffix": " MB Used", "run_once": true},
+                                    "id": "storage_label",
+                                    "size": 24,
+                                    "pad": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }        
+    ]
+}

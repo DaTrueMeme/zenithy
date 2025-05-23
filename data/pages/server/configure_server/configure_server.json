@@ -1,0 +1,112 @@
+{
+    "background": "data/pages/server/configure_server/background.jpg",
+    "elements": [
+        {
+            "type": "button",
+            "text": "Back",
+            "id": "back_button",
+            "function": "ElementManager.loadPage('server/server')",
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "${selected_server}",
+            "id": "server_name_label",
+            "size": 48,
+            "pad": 5
+        },
+        {
+            "type": "label",
+            "text": "Configure The Server",
+            "id": "title",
+            "size": 14,
+            "pad": 20
+        },
+        {
+            "type": "frame",
+            "id": "frame",
+            "width": 600,
+            "height": 50,
+            "pad": 0,
+            "children": [
+                {
+                    "type": "frame",
+                    "id": "settings",
+                    "width": 600,
+                    "height": 50,
+                    "pad": 5,
+                    "padx": 5,
+                    "bg_color": "#2b2b2b",
+                    "align": "left",
+                    "children": [
+                        {
+                            "type": "button",
+                            "text": "Quick Settings",
+                            "id": "quick_settings",
+                            "function": "ElementManager.loadPage('server/configure_server/quick_settings/quick_settings')",
+                            "state": {"condition": "os.path.isfile(f'{ServerManager.servers[ElementManager.data['selected_server']]['path']}/server.properties')"},
+                            "pad": 5,
+                            "padx": 5,
+                            "align": "left"
+                        },
+                        {
+                            "type": "button",
+                            "text": "Whitelist Settings",
+                            "id": "whitelist_settings",
+                            "function": "ElementManager.loadPage('server/configure_server/whitelist/whitelist')",
+                            "state": {"condition": "os.path.isfile(f'{ServerManager.servers[ElementManager.data['selected_server']]['path']}/whitelist.json')"},
+                            "pad": 5,
+                            "padx": 5,
+                            "align": "left"
+                        },
+                        {
+                            "type": "button",
+                            "text": "Custom Ports",
+                            "id": "custom_ports",
+                            "function": "ElementManager.loadPage('server/configure_server/custom_ports/custom_ports')",
+                            "pad": 5,
+                            "padx": 5,
+                            "align": "left"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "button",
+            "text": "Upload Icon",
+            "id": "upload_icon",
+            "function": "uploadIcon(ElementManager)",
+            "pad": 5
+        },
+        {
+            "type": "entry",
+            "text": "Rename Server",
+            "id": "rename_server",
+            "function": "renameServer(ElementManager)",
+            "pad": 5,
+            "button": {
+                "text": "Save Server Name",
+                "function": "renameServer(ElementManager)",
+                "state": {"condition": "ElementManager.data['selected_server'] not in ServerManager.running_servers"},
+                "id": "save_server_name",
+                "pad": 5
+            }
+        },
+        {
+            "type": "button",
+            "text": "Open Server Directory",
+            "id": "open_server_dir",
+            "function": "openServerDir(ElementManager)",
+            "pad": 5
+        },
+        {
+            "type": "button",
+            "text": "Delete Server",
+            "id": "delete_server",
+            "state": {"condition": "ElementManager.data['selected_server'] not in ServerManager.running_servers"},
+            "function": "ElementManager.loadPage('server/confirm_deletion/confirm_deletion')",
+            "pad": 5
+        }
+    ]
+}

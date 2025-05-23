@@ -1,0 +1,4 @@
+{
+    "manifest_url": "https://meta.fabricmc.net/v2/versions/",
+    "handler": "handler.py"
+}

@@ -1,0 +1,44 @@
+{
+    "button": {
+        "fg_color": "#2EBFA5",
+        "hover_color": "#248E74",
+        "text_color": "#FFFFFF"
+    },
+    "entry": {
+        "fg_color": "#343638"
+    },
+    "optionmenu": {
+        "fg_color": "#2EBFA5",
+        "button_color": "#7DDE92",
+        "button_hover_color": "#5C946C",
+        "dropdown_fg_color": "#1A1A1A",
+        "dropdown_hover_color": "#474747",
+        "dropdown_text_color": "#FFFFFF",
+        "text_color": "#FFFFFF"
+    },
+    "progressbar": {
+        "fg_color": "#4a4d50",
+        "progress_color": "#2EBFA5"
+    },
+    "switch": {
+        "fg_color": "#4a4d50",
+        "progress_color": "#2EBFA5",
+        "button_color": "#7DDE92",
+        "button_hover_color": "#5C946C"
+    },
+    "slider": {
+        "fg_color": "#4a4d50",
+        "progress_color": "#2EBFA5",
+        "button_color": "#7DDE92",
+        "button_hover_color": "#5C946C"
+    },
+    "segmentedbutton": {
+        "fg_color": "#4a4d50",
+        "selected_color": "#2EBFA5",
+        "selected_hover_color": "#248E74",
+        "text_color": "#FFFFFF"
+    },
+    "linegraph": {
+        "spine_color": "#2ebfa5"
+    }
+}
